@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WAAPI Timing Properties</title>
+    <meta charset="UTF-8" />
+    <!-- Load script locally for development ---------->
+    <script src="dist/wtoptions.js"></script>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/wtoptions.js"></script>-->
+    <!--    or from unpkg -->
+    <!--    <script src="https://unpkg.com/waapi-timing-properties"></script>-->
+    <script src="https://unpkg.com/animatable-properties"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css" />
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/quasar@^1.8.5/dist/quasar.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@^1.8.5/dist/quasar.umd.min.js"></script>
+
+    <div id="q-app">
+      <q-layout view="hHh lpR fFf" class="shadow-2 rounded-borders">
+        <q-header elevated>
+          <q-toolbar class="bg-primary glossy text-white">
+            <q-icon name="fab fa-css3-alt" size="xl"></q-icon>
+
+            <q-toolbar-title
+              >Animatable CSS properties<br />
+              <span class="text-subtitle2">$ yarn add animatable-properties&nbsp;</span>
+            </q-toolbar-title>
+
+            <q-btn flat icon="fab fa-github" size="xl" type="a" target="_blank" href="https://github.com/apasov/animatable-properties">
+              <q-tooltip>
+                View on Github
+              </q-tooltip>
+            </q-btn>
+            <q-btn flat icon="fab fa-npm" size="xl" type="a" target="_blank" href="https://npmjs.com/package/animatable-properties">
+              <q-tooltip>
+                View on NPM
+              </q-tooltip>
+            </q-btn>
+          </q-toolbar>
+        </q-header>
+
+        <q-page-container>
+          <q-page>
+            <div class="row">
+              <div class="q-pa-md" style="max-width: 300px">
+                <q-card bordered>
+                  <q-card-section>
+                    <q-input v-model="modelType" dense label="Type property to check"></q-input>
+                  </q-card-section>
+                  <q-separator></q-separator>
+                  <q-card-section>
+                    <div v-show="modelType" style="text-align: right;">
+                      <div class="text-h5">
+                        isAnimatable
+                        <q-badge align="middle" :color="isAnimatable(modelType) ? 'green' : 'red'">{{isAnimatable(modelType)}}</q-badge>
+                      </div>
+                      <span v-show="isAnimatable(modelType) && isCSS(modelType)">
+                        <div class="text-h5">
+                          CSS
+                          <q-badge align="middle">{{modelType ? modelType.toLowerCase() : ''}}</q-badge>
+                        </div>
+                        <div class="text-h5">
+                          JS
+                          <q-badge align="middle">{{Js(modelType)}}</q-badge>
+                        </div>
+                        <div class="text-h5">
+                          WAAPI
+                          <q-badge align="middle">{{Waapi(modelType)}}</q-badge>
+                        </div>
+                      </span>
+                    </div>
+                  </q-card-section>
+                </q-card>
+              </div>
+
+              <div class="q-pa-md" style="max-width: 300px">
+                <q-card bordered>
+                  <q-card-section>
+                    <q-select
+                      v-model="model"
+                      :options="options"
+                      label="Select animatable property"
+                      use-input
+                      input-debounce="0"
+                      hide-selected
+                      fill-input
+                      dense
+                      @filter="filterFn"
+                    ></q-select>
+                  </q-card-section>
+                  <q-separator></q-separator>
+                  <q-card-section>
+                    <div v-show="model" style="text-align: right;">
+                      <div class="text-h5">
+                        isAnimatable
+                        <q-badge align="middle" color="green">{{isAnimatable(model)}}</q-badge>
+                      </div>
+                      <div class="text-h5">
+                        CSS
+                        <q-badge align="middle">{{model}}</q-badge>
+                      </div>
+                      <div class="text-h5">
+                        JS
+                        <q-badge align="middle">{{Js(model)}}</q-badge>
+                      </div>
+                      <div class="text-h5">
+                        WAAPI
+                        <q-badge align="middle">{{Waapi(model)}}</q-badge>
+                      </div>
+                    </div>
+                  </q-card-section>
+                </q-card>
+              </div>
+            </div>
+          </q-page>
+        </q-page-container>
+
+        <q-footer elevated>
+          <q-toolbar class="bg-primary glossy text-white">
+            <q-btn
+              flat
+              icon="fab fa-github"
+              label="View source of this demo"
+              type="a"
+              target="_blank"
+              href="https://github.com/apasov/animatable-properties/blob/master/index.html"
+            >
+              <q-tooltip>
+                View source of this demo
+              </q-tooltip>
+            </q-btn>
+          </q-toolbar>
+        </q-footer>
+      </q-layout>
+    </div>
+    <script>
+      /* global Vue, animatable */
+      new Vue({
+        el: '#q-app',
+
+        data: function() {
+          return {
+            model: null,
+            modelType: null,
+            options: animatable.propertiesCSS
+          }
+        },
+
+        created() {
+          this._options = animatable.propertiesCSS
+        },
+
+        methods: {
+          Js(model) {
+            if (model) {
+              return animatable.cssToJs(model, false)
+            }
+            return ''
+          },
+
+          Waapi(model) {
+            if (model) {
+              return animatable.cssToJs(model)
+            }
+            return ''
+          },
+
+          isAnimatable(model) {
+            if (model) {
+              return animatable.isAnimatable(model)
+            }
+            return ''
+          },
+
+          isCSS(model) {
+            if (animatable.propertiesCSS.includes(model.toLowerCase())) {
+              return true
+            }
+            return false
+          },
+
+          filterFn(val, update) {
+            if (val === '') {
+              update(() => {
+                this.options = this._options
+              })
+              return
+            }
+
+            update(() => {
+              const needle = val.toLowerCase()
+              this.options = this._options.filter(v => v.toLowerCase().indexOf(needle) > -1)
+            })
+          }
+        }
+      })
+    </script>
+
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAoCAIAAADsXkQEAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAABJ0AAASdAHeZh94AAACl0lEQVRYw+1YvWobQRAe7wkZETAqrjAnCMZPoOpewi/hWg/kWi+RPMQW4Z7AqLkjIQcRKqzEYJJi7GEyf7cSuPMWZm9mdr7535UBPpax2rY19zFXS5orxcDrhytUJPYxl/axNZWQ6PseN6vVav1wBQDXd5dVV+P++5c/SCcKcnGjJUkbHsFPWhfCy25zAAA8b65ucxBcTeEs1NZtDjlnwb3QQX6PukEjBPx/Me/7vurq67tL8/xtXf16+nseNmWEhz0V+n1bVyUY+zyKDXdd+J084ADMYwk8De/2WM4Zs+JhPI4vkwFYtjVCLtv6hP4WLYhICHaqESa8bvqZl2lUjX+bRQMAUA/cJm4c7gkMvRfY+zwCzA2/ecC5Q6+ob/tm0RCXG8cBvGhregqqCYGbRTMch+E4xHUgAE7Lt6kLAIbjIChcTLCEWXFhzgIe95V/mqacMRLce4wDUDU9ji+CLjCEWfxTt3uKgflhz12v5YR8aa2hjYGvpJ27TpPAjPY+jzf3z7zFk4Y0ZyGpIzw9A3hDCpnpfMcdYtYw9aGmC/iimKOQ8D5IPA4APn+4KTxlAj55N48206s13oq0F/1plnry2GaeeILRFJo8NPtoo211/c4577bzOM1xm+l5x8+W9jfVs1muovt5C3gdb/bOzAuLvj3NkJiR4HPwtNlCNiKwlzxB/Pb1hwi4Bp6oNa6XV03JW9F7oHn0FFzy2JraCVMXndJPVdNpt8e43D6P3stX0EVG6d1IArvtnD+T0+QbWzhkGset1PJezOVvopv755In8BlLOG38Jvr08/Ny7T5LfvdP2poSogaWfhd6v9vOYwES40Oz6L2WcwZ4veEFBqojAc7V89jEm/A7+H+BUMe5k0gf6239A8lPFBur9Z6xAAAAAElFTkSuQmCC"
+      id="logo"
+      style="height: auto; width: 20%;"
+    />
+    <script>
+      // let options = {
+      //   duration: 1000,
+      //   iterations: 2,
+      //   direction: 'alternate',
+      //   easing: 'easy',
+      //   play: true
+      // }
+      // console.log(animateOptions.sanitize(options))
+      // console.log('id' in animateOptions.options)
+      // console.log(animateOptions)
+      // console.log(animateOptions.options)
+    </script>
+  </body>
+</html>
