@@ -4,6 +4,8 @@
 [![](https://img.shields.io/npm/v/waapi-timing-properties.svg)](https://www.npmjs.com/package/waapi-timing-properties)
 [![](https://img.shields.io/bundlephobia/minzip/waapi-timing-properties.svg)](https://bundlephobia.com/result?p=waapi-timing-properties)
 
+This is alpha. Please don't use it. Stable version coming very soon.
+
 List of [Element.animate()](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) options and their possible values.
 
 List of timing properties and their possible values for animation effects used in [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
@@ -66,4 +68,16 @@ Run tests:
 
 ```
 yarn test
+```
+
+Lint:
+
+```shell script
+yarn lint
+```
+
+Fix linting and style errors:
+
+```shell script
+yarn fix
 ```
