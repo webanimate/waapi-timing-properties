@@ -1,7 +1,9 @@
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import * as pkg from './package.json'
 
-const name = 'WTOptions'
+const name = 'WTProperties'
 
 export default {
   input: pkg.main,
@@ -12,6 +14,17 @@ export default {
     sourcemap: true
   },
   plugins: [
+    resolve(),
+    commonjs({
+      namedExports: {
+        'node_modules/underscore/underscore.js': [
+          'isObject', //
+          'isArray',
+          'isString',
+          'isEmpty'
+        ]
+      }
+    }),
     terser({
       output: {
         preamble: `//${pkg.name} v${pkg.version} ${pkg.homepage}`
