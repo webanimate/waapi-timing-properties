@@ -47,17 +47,17 @@ Or load from CDN:
 <script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/wtproperties.js"></script>
 ```
 
-`properties` is an object containing properties names and their possible values.
+`WTProperties.properties` is an object containing properties names and their possible values.
 
-`propertiesNames` is an array containing only properties names.
+`WTProperties.propertiesNames` is an array containing only properties names.
 
-`sanitize` has two optional arguments:
+`WTProperties.sanitize` has two optional arguments:
 
-`sanitize(objectArrayOrStringToCheck, checkValues = true, returnDefault = true)`
+`WTProperties.sanitize(objectArrayOrStringToCheck, checkValues = true, returnDefault = true)`
 
-`validate` has one:
+`WTProperties.validate` has one:
 
-`validate(objectArrayOrStringToCheck, checkValues = true)` 
+`WTProperties.validate(objectArrayOrStringToCheck, checkValues = true)` 
 
 Let's sanitize and validate some options:
 
@@ -69,35 +69,35 @@ const options = {
   someInvalidOption: 123
 }
 ```
-Use `sanitize(options)` to remove properties with invalid names and replace properties with valid names but invalid values with their default values:
+Use `WTProperties.sanitize(options)` to remove properties with invalid names and replace properties with valid names but invalid values with their default values:
 ```javascript
-sanitize(options) === {
+WTProperties.sanitize(options) === {
     duration: 0,
     easing: 'linear',
     iterations: 3
 }
-validate(options) === true
+WTProperties.validate(options) === true
 ``` 
 
 Use `sanitize(options, true, false)` to remove all properties with invalid names and/or values:
 
 ```javascript
-sanitize(options, true, false) === {
+WTProperties.sanitize(options, true, false) === {
     iterations: 3
 }
-validate(options) === true
+WTProperties.validate(options) === true
 ``` 
 
 Use `sanitize(options, false)` to remove only properties with invalid names without checking their values:
 
 ```javascript
-sanitize(options, false) === {
+WTProperties.sanitize(options, false) === {
     duration: -1000,
     easing: 'not easy',
     iterations: 3
 }
-validate(options) === false
-validate(options, false) === true
+WTProperties.validate(options) === false
+WTProperties.validate(options, false) === true
 ```
 
 `options` can be array of properties names to check or a string (a single property). In this case the optional arguments have no effect.
