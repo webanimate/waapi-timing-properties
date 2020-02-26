@@ -149,7 +149,13 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
     _properties = {}
   }
   if (!isEmpty(obj)) {
-    if (!Array.isArray(obj) && isObject(obj)) {
+    if (Array.isArray(obj)) {
+      for (const key of obj) {
+        if (propertiesNames.includes(key)) {
+          _properties.push(key)
+        }
+      }
+    } else if (isObject(obj)) {
       Object.keys(obj).forEach(key => {
         if (key in properties) {
           if (checkValues) {
@@ -165,13 +171,10 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
           }
         }
       })
-    } else if (Array.isArray(obj)) {
-      for (const key of obj) {
-        if (propertiesNames.includes(key)) {
-          _properties.push(key)
-        }
+    } else if (isString(obj)) {
+      if (validate(obj)) {
+        _properties = obj
       }
-      return _properties
     }
   }
   return _properties
@@ -179,7 +182,14 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
 
 const validate = (obj, checkValues = true) => {
   if (!isEmpty(obj)) {
-    if (!Array.isArray(obj) && isObject(obj)) {
+    if (Array.isArray(obj)) {
+      for (const key of obj) {
+        if (!propertiesNames.includes(key)) {
+          return false
+        }
+      }
+      return true
+    } else if (isObject(obj)) {
       for (const key of Object.keys(obj)) {
         if (!(key in properties)) {
           return false
@@ -187,13 +197,6 @@ const validate = (obj, checkValues = true) => {
           if (!isValidPropertyValue(key, obj[key])) {
             return false
           }
-        }
-      }
-      return true
-    } else if (Array.isArray(obj)) {
-      for (const key of obj) {
-        if (!propertiesNames.includes(key)) {
-          return false
         }
       }
       return true
