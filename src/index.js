@@ -108,6 +108,9 @@ Object.keys(properties).forEach(key => {
 })
 
 const isValidPropertyValue = (key, value) => {
+  if (!isNumber(value) && !isString(value)) {
+    return false
+  }
   const property = properties[key]
   if (property) {
     if (property.type === 'Number') {
