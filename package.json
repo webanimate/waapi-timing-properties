@@ -27,7 +27,10 @@
     "lint:prettier": "prettier --check \"**/*.*\""
   },
   "dependencies": {
-    "underscore": "^1.9.2"
+    "lodash.isempty": "^4.4.0",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^4.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",

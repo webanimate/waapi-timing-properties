@@ -1,4 +1,7 @@
-import { isObject, isEmpty, isArray, isString } from 'underscore'
+import isObject from 'lodash.isobject'
+import isString from 'lodash.isstring'
+import isEmpty from 'lodash.isempty'
+import isNumber from 'lodash.isnumber'
 
 const properties = {
   id: {
@@ -137,13 +140,13 @@ const isValidPropertyValue = (key, value) => {
 
 const sanitize = (obj, checkValues = true, returnDefault = true) => {
   let _properties
-  if (isArray(obj)) {
+  if (Array.isArray(obj)) {
     _properties = []
   } else if (isObject(obj)) {
     _properties = {}
   }
   if (!isEmpty(obj)) {
-    if (!isArray(obj) && isObject(obj)) {
+    if (!Array.isArray(obj) && isObject(obj)) {
       Object.keys(obj).forEach(key => {
         if (key in properties) {
           if (checkValues) {
@@ -159,7 +162,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
           }
         }
       })
-    } else if (isArray(obj)) {
+    } else if (Array.isArray(obj)) {
       for (const key of obj) {
         if (propertiesNames.includes(key)) {
           _properties.push(key)
@@ -173,7 +176,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
 
 const validate = (obj, checkValues = true) => {
   if (!isEmpty(obj)) {
-    if (!isArray(obj) && isObject(obj)) {
+    if (!Array.isArray(obj) && isObject(obj)) {
       for (const key of Object.keys(obj)) {
         if (!(key in properties)) {
           return false
@@ -184,7 +187,7 @@ const validate = (obj, checkValues = true) => {
         }
       }
       return true
-    } else if (isArray(obj)) {
+    } else if (Array.isArray(obj)) {
       for (const key of obj) {
         if (!propertiesNames.includes(key)) {
           return false

@@ -15,16 +15,7 @@ export default {
   },
   plugins: [
     resolve(),
-    commonjs({
-      namedExports: {
-        'node_modules/underscore/underscore.js': [
-          'isObject', //
-          'isArray',
-          'isString',
-          'isEmpty'
-        ]
-      }
-    }),
+    commonjs(),
     terser({
       output: {
         preamble: `//${pkg.name} v${pkg.version} ${pkg.homepage}`
