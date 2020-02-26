@@ -4,11 +4,11 @@
     <title>WAAPI Timing Properties</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- Load script locally for development ↓↓↓ ---------->
+    <!-- Load script locally for development ↓↓↓ -->
     <script src="dist/wtproperties.js"></script>
-    <!--    <script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/wtproperties.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/wtproperties.js"></script>-->
     <!--  Load from cdn: jsdelivr ↑↑↑ or unpkg ↓↓↓ -->
-    <!--    <script src="https://unpkg.com/waapi-timing-properties"></script>-->
+    <!--<script src="https://unpkg.com/waapi-timing-properties"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@latest/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/quasar@^1.8.5/dist/quasar.min.css" rel="stylesheet" type="text/css" />
@@ -149,6 +149,10 @@
                   <q-card-section>
                     <div><q-btn flat color="primary" icon="fas fa-vial" label="Test:"></q-btn></div>
                     <div class="text-h6">
+                      <q-btn flat label="sanitize(string)" no-caps></q-btn>
+                      <q-badge align="middle" :color="validate(JSON.stringify(codeString)).color" class="q-mr-md">{{sanitizedString}}</q-badge>
+                    </div>
+                    <div class="text-h6">
                       <q-btn flat label="validate(string)" no-caps></q-btn>
                       <q-badge align="middle" :color="validate(JSON.stringify(codeString)).color" class="q-mr-md">{{validate(JSON.stringify(codeString)).valid}}</q-badge>
                     </div>
@@ -186,12 +190,13 @@
               {
                 delay: -5,
                 direction: 111,
-                duration: 'aaaaaaa',
+                duration: '5 seconds',
                 easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
                 fill: null,
                 composite: undefined,
                 iterationComposite: 111,
-                endDelay: 1e310
+                endDelay: 1e310,
+                invalidProperty: 'false'
               },
               null,
               2
@@ -205,22 +210,13 @@
         },
 
         computed: {
-          sanitizedWithJson: function() {
-            let sanitized = ''
-            try {
-              sanitized = JSON.stringify(JSON.parse(this.code), WTProperties.propertiesNames, 2)
-            } catch (e) {
-              sanitized = e
-            }
-            return sanitized
-          },
-
           sanitized: function() {
             let sanitized = ''
             try {
               sanitized = JSON.stringify(WTProperties.sanitize(JSON.parse(this.code), this.checkValue, this.returnDefault), null, 2)
             } catch (e) {
               sanitized = e
+              console.log(e)
             }
             return sanitized
           },
@@ -231,6 +227,18 @@
               sanitized = JSON.stringify(WTProperties.sanitize(JSON.parse(this.codeArray)), null, 2)
             } catch (e) {
               sanitized = e
+              console.log(e)
+            }
+            return sanitized
+          },
+
+          sanitizedString: function() {
+            let sanitized = ''
+            try {
+              sanitized = WTProperties.sanitize(this.codeString)
+            } catch (e) {
+              sanitized = e
+              console.log(e)
             }
             return sanitized
           }
