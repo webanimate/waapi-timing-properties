@@ -94,26 +94,6 @@
                   </q-card-section>
                 </q-card>
               </div>
-
-              <div class="q-ma-md" style="min-width: 30%; max-width: 100%;">
-                <q-card bordered>
-                  <q-card-section style="text-align: left;">
-                    <q-input v-model="sanitizedWithJson" hint="⬆️ Sanitized using JSON.stringify() replacer: ⬆️" type="textarea" readonly filled></q-input>
-                  </q-card-section>
-                  <q-separator></q-separator>
-                  <q-card-section>
-                    <div><q-btn flat color="primary" icon="fas fa-vial" label="Test:"></q-btn></div>
-                    <div class="text-h6">
-                      <q-btn flat label="validate(obj)" no-caps></q-btn>
-                      <q-badge align="middle" :color="validate(sanitizedWithJson).color" class="q-mr-md">{{validate(sanitizedWithJson).valid}}</q-badge>
-                    </div>
-                    <div class="text-h6">
-                      <q-btn flat label="validate(obj, false)" no-caps></q-btn>
-                      <q-badge align="middle" :color="validate(sanitizedWithJson, false).color">{{validate(sanitizedWithJson, false).valid}}</q-badge>
-                    </div>
-                  </q-card-section>
-                </q-card>
-              </div>
             </div>
 
             <div class="row">
