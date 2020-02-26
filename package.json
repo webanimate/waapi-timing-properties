@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "homepage": "https://github.com/webanimate/waapi-timing-properties#readme",
-  "unpkg": "dist/wtoptions.js",
+  "unpkg": "dist/wtproperties.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webanimate/waapi-timing-properties.git"
