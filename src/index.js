@@ -135,7 +135,7 @@ const isValidPropertyValue = (key, value) => {
   return false
 }
 
-const sanitize = (obj, checkValue = true, returnDefault = true) => {
+const sanitize = (obj, checkValues = true, returnDefault = true) => {
   let _properties
   if (isArray(obj)) {
     _properties = []
@@ -146,7 +146,7 @@ const sanitize = (obj, checkValue = true, returnDefault = true) => {
     if (!isArray(obj) && isObject(obj)) {
       Object.keys(obj).forEach(key => {
         if (key in properties) {
-          if (checkValue) {
+          if (checkValues) {
             if (!isValidPropertyValue(key, obj[key])) {
               if (returnDefault && properties[key].default !== undefined) {
                 _properties[key] = properties[key].default
@@ -171,13 +171,13 @@ const sanitize = (obj, checkValue = true, returnDefault = true) => {
   return _properties
 }
 
-const validate = (obj, checkValue = true) => {
+const validate = (obj, checkValues = true) => {
   if (!isEmpty(obj)) {
     if (!isArray(obj) && isObject(obj)) {
       for (const key of Object.keys(obj)) {
         if (!(key in properties)) {
           return false
-        } else if (checkValue) {
+        } else if (checkValues) {
           if (!isValidPropertyValue(key, obj[key])) {
             return false
           }
