@@ -57,7 +57,7 @@ Or load from CDN:
 
 `WTProperties.validate` has one:
 
-`WTProperties.validate(objectArrayOrStringToCheck, checkValues = true)` 
+`WTProperties.validate(objectArrayOrStringToCheck, checkValues = true)`
 
 Let's sanitize and validate some options:
 
@@ -69,33 +69,38 @@ const options = {
   someInvalidOption: 123
 }
 ```
+
 Use `WTProperties.sanitize(options)` to remove properties with invalid names and replace properties with valid names but invalid values with their default values:
+
 ```javascript
-WTProperties.sanitize(options) === {
+WTProperties.sanitize(options) ===
+  {
     duration: 0,
     easing: 'linear',
     iterations: 3
-}
+  }
 WTProperties.validate(options) === true
-``` 
+```
 
 Use `sanitize(options, true, false)` to remove all properties with invalid names and/or values:
 
 ```javascript
-WTProperties.sanitize(options, true, false) === {
+WTProperties.sanitize(options, true, false) ===
+  {
     iterations: 3
-}
+  }
 WTProperties.validate(options) === true
-``` 
+```
 
 Use `sanitize(options, false)` to remove only properties with invalid names without checking their values:
 
 ```javascript
-WTProperties.sanitize(options, false) === {
+WTProperties.sanitize(options, false) ===
+  {
     duration: -1000,
     easing: 'not easy',
     iterations: 3
-}
+  }
 WTProperties.validate(options) === false
 WTProperties.validate(options, false) === true
 ```
