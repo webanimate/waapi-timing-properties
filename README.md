@@ -1,4 +1,4 @@
-# waapi-timing-properties
+# WAAPI timing properties
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![](https://img.shields.io/npm/v/waapi-timing-properties.svg)](https://www.npmjs.com/package/waapi-timing-properties)
@@ -6,17 +6,11 @@
 
 This is alpha. Please don't use it. Stable version coming very soon.
 
-List of [Element.animate()](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) options and their possible values.
+[DEMO](https://webanimate.github.io/waapi-timing-properties/) and its [source code](https://github.com/webanimate/waapi-timing-properties/blob/master/index.html).
 
-List of timing properties and their possible values for animation effects used in [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
+List of [timing properties](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) and their possible values for animation effects used in [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
 
 It can be used to validate and sanitize options passed to [Element.animate()](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate), [KeyframeEffectReadOnly()](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffectReadOnly/KeyframeEffectReadOnly) and [KeyframeEffect()](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/KeyframeEffect).
-
-Main article: https://developer.mozilla.org/en-US/docs/Web/API/EffectTiming
-
-https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/KeyframeEffect
-
-https://developer.mozilla.org/en-US/docs/Web/API/Element/animate
 
 ## Install
 
@@ -32,29 +26,83 @@ $ npm install waapi-timing-properties
 
 ## Usage
 
-Import:
+Import all functionality into one object:
 
 ```javascript
-import animateOptions from 'waapi-timing-properties'
+import * as WTProperties from 'waapi-timing-properties'
+```
+
+Or import only what you need:
+
+```javascript
+import { properties, propertiesNames, sanitize, validate } from 'waapi-timing-properties'
 ```
 
 Or load from CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/animateoptions.js"></script>
+<!-- Either -->
+<script src="https://unpkg.com/waapi-timing-properties"></script>
+<!-- or -->
+<script src="https://cdn.jsdelivr.net/npm/waapi-timing-properties@latest/dist/wtproperties.js"></script>
 ```
 
-Validate options:
+`properties` is an object containing properties names and their possible values.
+
+`propertiesNames` is an array containing only properties names.
+
+`sanitize` has two optional arguments:
+
+`sanitize(objectArrayOrStringToCheck, checkValues = true, returnDefault = true)`
+
+`validate` has one:
+
+`validate(objectArrayOrStringToCheck, checkValues = true)` 
+
+Let's sanitize and validate some options:
 
 ```javascript
-let options = {
-  duration: 1000,
-  iterations: 2,
-  direction: 'alternate',
-  easing: 'easy',
-  play: true
+const options = {
+  duration: -1000,
+  easing: 'not easy',
+  iterations: 3,
+  someInvalidOption: 123
 }
 ```
+Use `sanitize(options)` to remove properties with invalid names and replace properties with valid names but invalid values with their default values:
+```javascript
+sanitize(options) === {
+    duration: 0,
+    easing: 'linear',
+    iterations: 3
+}
+validate(options) === true
+``` 
+
+Use `sanitize(options, true, false)` to remove all properties with invalid names and/or values:
+
+```javascript
+sanitize(options, true, false) === {
+    iterations: 3
+}
+validate(options) === true
+``` 
+
+Use `sanitize(options, false)` to remove only properties with invalid names without checking their values:
+
+```javascript
+sanitize(options, false) === {
+    duration: -1000,
+    easing: 'not easy',
+    iterations: 3
+}
+validate(options) === false
+validate(options, false) === true
+```
+
+`options` can be array of properties names to check or a string (a single property). In this case the optional arguments have no effect.
+
+Play with the [DEMO](https://webanimate.github.io/waapi-timing-properties/) for better understanding of how it works.
 
 # Development
 
@@ -62,6 +110,12 @@ Build the bundle for browsers into `./dist` folder:
 
 ```
 yarn build
+```
+
+Rebuild the bundle when its source files change on disk:
+
+```shell script
+yarn watch
 ```
 
 Run tests:
