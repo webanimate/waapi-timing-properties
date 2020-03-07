@@ -55,9 +55,9 @@ Or load from CDN:
 
 `WTProperties.sanitize(objectArrayOrStringToCheck, checkValues = true, returnDefault = true)`
 
-`WTProperties.validate` has one:
+`WTProperties.validate` also has two optional arguments:
 
-`WTProperties.validate(objectArrayOrStringToCheck, checkValues = true)`
+`WTProperties.validate(objectArrayOrStringToCheck, checkValues = true, returnFirstInvalidProperty = false)`
 
 Let's sanitize and validate some options:
 
@@ -105,7 +105,22 @@ WTProperties.validate(options) === false
 WTProperties.validate(options, false) === true
 ```
 
-`options` can be array of properties names to check or a string (a single property). In this case the optional arguments have no effect.
+Set the third argument of `validate()` - `returnFirstInvalidProperty` to `true` to return string containing first invalid property instead of boolean when the result is `false`:
+
+```javascript
+const options = {
+  duration: -1000,
+  easing: 'not easy',
+  iterations: 3,
+  someInvalidOption: 123
+}
+WTProperties.validate(options) === false
+WTProperties.validate(options, true, true) === 'duration: -1000'
+WTProperties.validate(options, false) === false
+WTProperties.validate(options, false, true) === 'someInvalidOption: 123'
+```
+
+`options` can be array of properties names to check or a string (a single property name). In this case the optional arguments have no effect.
 
 Play with the [DEMO](https://webanimate.github.io/waapi-timing-properties/) for better understanding of how it works.
 

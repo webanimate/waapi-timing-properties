@@ -61,8 +61,16 @@
                       <q-badge align="middle" :color="validate(code).color" class="q-mr-md">{{validate(code).valid}}</q-badge>
                     </div>
                     <div class="text-h6">
+                      <q-btn flat label="validate(obj, true, true)" no-caps></q-btn>
+                      <q-badge align="middle" :color="validate(code).color">{{validate(code, true, true).valid}}</q-badge>
+                    </div>
+                    <div class="text-h6">
                       <q-btn flat label="validate(obj, false)" no-caps></q-btn>
                       <q-badge align="middle" :color="validate(code, false).color">{{validate(code, false).valid}}</q-badge>
+                    </div>
+                    <div class="text-h6">
+                      <q-btn flat label="validate(obj, false, true)" no-caps></q-btn>
+                      <q-badge align="middle" :color="validate(code, false).color">{{validate(code, false, true).valid}}</q-badge>
                     </div>
                   </q-card-section>
                 </q-card>
@@ -86,6 +94,10 @@
                     <div class="text-h6">
                       <q-btn flat label="validate(obj)" no-caps></q-btn>
                       <q-badge align="middle" :color="validate(sanitized).color" class="q-mr-md">{{validate(sanitized).valid}}</q-badge>
+                    </div>
+                    <div class="text-h6">
+                      <q-btn flat label="validate(obj, true, true)" no-caps></q-btn>
+                      <q-badge align="middle" :color="validate(sanitized).color">{{validate(sanitized, true, true).valid}}</q-badge>
                     </div>
                     <div class="text-h6">
                       <q-btn flat label="validate(obj, false)" no-caps></q-btn>
@@ -113,6 +125,10 @@
                     <div class="text-h6">
                       <q-btn flat label="validate(arr)" no-caps></q-btn>
                       <q-badge align="middle" :color="validate(codeArray).color" class="q-mr-md">{{validate(codeArray).valid}}</q-badge>
+                    </div>
+                    <div class="text-h6">
+                      <q-btn flat label="validate(arr, true, true)" no-caps></q-btn>
+                      <q-badge align="middle" :color="validate(codeArray).color" class="q-mr-md">{{validate(codeArray, true, true).valid}}</q-badge>
                     </div>
                   </q-card-section>
                 </q-card>
@@ -274,7 +290,7 @@
         },
 
         methods: {
-          validate(obj, checkValue = true) {
+          validate(obj, checkValue = true, returnFirstInvalidProperty = false) {
             const isValid = { color: 'red', valid: false }
             try {
               obj = JSON.parse(obj)
@@ -284,6 +300,8 @@
             if (WTProperties.validate(obj, checkValue)) {
               isValid.color = 'green'
               isValid.valid = true
+            } else {
+              isValid.valid = WTProperties.validate(obj, checkValue, returnFirstInvalidProperty)
             }
             return isValid
           }

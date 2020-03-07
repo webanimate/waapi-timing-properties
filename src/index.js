@@ -180,22 +180,22 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
   return _properties
 }
 
-const validate = (obj, checkValues = true) => {
+const validate = (obj, checkValues = true, returnFirstInvalidProperty = false) => {
   if (!isEmpty(obj)) {
     if (Array.isArray(obj)) {
       for (const key of obj) {
         if (!propertiesNames.includes(key)) {
-          return false
+          return returnFirstInvalidProperty ? key : false
         }
       }
       return true
     } else if (isObject(obj)) {
       for (const key of Object.keys(obj)) {
         if (!(key in properties)) {
-          return false
+          return returnFirstInvalidProperty ? `${key}: ${obj[key]}` : false
         } else if (checkValues) {
           if (!isValidPropertyValue(key, obj[key])) {
-            return false
+            return returnFirstInvalidProperty ? `${key}: ${obj[key]}` : false
           }
         }
       }
