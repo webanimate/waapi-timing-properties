@@ -1,6 +1,6 @@
 {
   "name": "waapi-timing-properties",
-  "version": "0.0.0-alpha.7",
+  "version": "0.0.0-alpha.8",
   "description": "Timing properties for animation effects used in Web Animations API.",
   "main": "src/index.js",
   "author": "Web Animate",
