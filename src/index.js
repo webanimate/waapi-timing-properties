@@ -112,33 +112,30 @@ const isValidPropertyValue = (key, value) => {
     return false
   }
   const property = properties[key]
-  if (property) {
-    if (property.type === 'Number') {
-      if (!(value >= property.min && value <= property.max)) {
-        return false
+  if (property.type === 'Number') {
+    if (!(value >= property.min && value <= property.max)) {
+      return false
+    }
+  } else {
+    if (property.values) {
+      value = value
+        .toString()
+        .replace(/\s+\(/g, '(')
+        .trim()
+      const bracketPosition = value.indexOf('(')
+      if (bracketPosition > 0) {
+        value = value.substring(0, bracketPosition + 1)
       }
-    } else if (property.type === 'String') {
-      if (property.values) {
-        value = value
-          .toString()
-          .replace(/\s+\(/g, '(')
-          .trim()
-        const bracketPosition = value.indexOf('(')
-        if (bracketPosition > 0) {
-          value = value.substring(0, bracketPosition + 1)
+      for (const propertyValue of property.values) {
+        if (value === propertyValue) {
+          return true
         }
-        for (const propertyValue of property.values) {
-          if (value === propertyValue) {
-            return true
-          }
-        }
-        return false
       }
-      return true
+      return false
     }
     return true
   }
-  return false
+  return true
 }
 
 const sanitize = (obj, checkValues = true, returnDefault = true) => {
@@ -171,7 +168,8 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
           }
         }
       })
-    } else if (isString(obj)) {
+    } else {
+      _properties = ''
       if (validate(obj)) {
         _properties = obj
       }
