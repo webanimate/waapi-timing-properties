@@ -26,6 +26,7 @@
     "lint:eslint": "eslint \"**/*.*\"",
     "lint:prettier": "prettier --check \"**/*.*\"",
     "test": "jest",
+    "up": "yarn upgrade-interactive && yarn audit"
   },
   "dependencies": {
     "lodash.isempty": "^4.4.0",

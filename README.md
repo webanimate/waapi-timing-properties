@@ -107,6 +107,8 @@ WTProperties.validate(options, false) === true
 
 Set the third argument of `validate()` - `returnFirstInvalidProperty` to `true` to return string containing first invalid property instead of boolean when the result is `false`:
 
+This can be useful for writing tests.
+
 ```javascript
 const options = {
   duration: -1000,
@@ -154,4 +156,10 @@ Fix linting and style errors:
 
 ```shell script
 yarn fix
+```
+
+Update dependencies:
+
+```shell script
+yarn up
 ```
