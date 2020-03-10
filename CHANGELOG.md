@@ -1,3 +1,9 @@
+# [1.0.0](https://github.com/webanimate/waapi-timing-properties/compare/v0.0.0-alpha.8...v1.0.0) (2020-03-10)
+
+### Performance Improvements
+
+- remove redundant code detected by tests ([3868531](https://github.com/webanimate/waapi-timing-properties/commit/3868531fdac69c72b3285df9968f9b18f9cd4184))
+
 # [0.0.0-alpha.8](https://github.com/webanimate/waapi-timing-properties/compare/v0.0.0-alpha.7...v0.0.0-alpha.8) (2020-03-07)
 
 ### Features
