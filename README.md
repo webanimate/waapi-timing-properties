@@ -4,6 +4,7 @@
 [![](https://img.shields.io/npm/v/waapi-timing-properties.svg)](https://www.npmjs.com/package/waapi-timing-properties)
 [![](https://img.shields.io/bundlephobia/minzip/waapi-timing-properties.svg)](https://bundlephobia.com/result?p=waapi-timing-properties)
 [![Dependency Status](https://david-dm.org/webanimate/waapi-timing-properties.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties)
+[![devDependencies Status](https://david-dm.org/webanimate/waapi-timing-properties/dev-status.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties?type=dev)
 [![codecov](https://codecov.io/gh/webanimate/waapi-timing-properties/branch/master/graph/badge.svg)](https://codecov.io/gh/webanimate/waapi-timing-properties)
 [![Build Status](https://travis-ci.org/webanimate/waapi-timing-properties.svg?branch=master)](https://travis-ci.org/webanimate/waapi-timing-properties)
 
