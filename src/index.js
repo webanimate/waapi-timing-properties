@@ -87,7 +87,8 @@ const properties = {
     values: [
       'add', //
       'accumulate',
-      'replace'
+      'replace',
+      'auto'
     ],
     default: 'replace'
   },
