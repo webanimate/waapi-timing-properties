@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.0.0...v1.1.0) (2020-03-21)
+
+### Features
+
+- add 'auto' option to 'composite' property ([0612638](https://github.com/webanimate/waapi-timing-properties/commit/061263864b81f4fe59f06b40589c5161f97734fa))
+
 # [1.0.0](https://github.com/webanimate/waapi-timing-properties/compare/v0.0.0-alpha.8...v1.0.0) (2020-03-10)
 
 ### Performance Improvements
