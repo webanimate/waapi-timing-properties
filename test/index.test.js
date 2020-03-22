@@ -8,80 +8,80 @@ const testData = {
         String: [
           {
             test: 'iterationComposite',
-            expect: true
+            expect: true,
           },
           {
             test: '123',
-            expect: false
-          }
+            expect: false,
+          },
         ],
         Array: [
           {
             test: ['iterationComposite', 'delay'],
-            expect: true
+            expect: true,
           },
           {
             test: ['iterationCompoite', 'delay'],
-            expect: false
-          }
+            expect: false,
+          },
         ],
         Object: [
           {
             test: {
-              iterationComposite: 'accumulate'
+              iterationComposite: 'accumulate',
             },
-            expect: true
+            expect: true,
           },
           {
             test: {
-              iterationComposite: '1'
+              iterationComposite: '1',
             },
-            expect: false
+            expect: false,
           },
           {
             test: {
-              iterationCompoite: 'accumulate'
+              iterationCompoite: 'accumulate',
             },
-            expect: false
+            expect: false,
           },
           {
             test: {
-              iterationComposite: false
+              iterationComposite: false,
             },
-            expect: false
+            expect: false,
           },
           {
             test: {
-              delay: -100
+              delay: -100,
             },
-            expect: false
+            expect: false,
           },
           {
             test: {
-              delay: 100
+              delay: 100,
             },
-            expect: true
+            expect: true,
           },
           {
             test: {
-              delay: 1e500
+              delay: 1e500,
             },
-            expect: false
+            expect: false,
           },
           {
             test: {
-              easing: 'cubic-bezier()'
+              easing: 'cubic-bezier()',
             },
-            expect: true
+            expect: true,
           },
           {
             test: {
-              id: 'cubic-bezier()'
+              id: 'cubic-bezier()',
             },
-            expect: true
-          }
-        ]
-      }
+            expect: true,
+          },
+        ],
+      },
     },
     {
       args: [false],
@@ -89,12 +89,12 @@ const testData = {
         Object: [
           {
             test: {
-              iterationComposite: '1'
+              iterationComposite: '1',
             },
-            expect: true
-          }
-        ]
-      }
+            expect: true,
+          },
+        ],
+      },
     },
     {
       args: [true, true],
@@ -102,29 +102,29 @@ const testData = {
         Array: [
           {
             test: ['iterationComposite', 'dlay'],
-            expect: 'dlay'
-          }
+            expect: 'dlay',
+          },
         ],
         Object: [
           {
             test: {
-              iteraionComposite: 'accumulate'
+              iteraionComposite: 'accumulate',
             },
-            expect: 'iteraionComposite: accumulate'
+            expect: 'iteraionComposite: accumulate',
           },
           {
             test: {
-              iterationComposite: '1'
+              iterationComposite: '1',
             },
-            expect: 'iterationComposite: 1'
+            expect: 'iterationComposite: 1',
           },
           {
             test: {},
-            expect: false
-          }
-        ]
-      }
-    }
+            expect: false,
+          },
+        ],
+      },
+    },
   ],
 
   sanitize: [
@@ -134,43 +134,43 @@ const testData = {
         String: [
           {
             test: 'endDelay',
-            expect: 'endDelay'
+            expect: 'endDelay',
           },
           {
             test: 'del',
-            expect: ''
-          }
+            expect: '',
+          },
         ],
         Array: [
           {
             test: ['direction', 'easing', 'dll'],
-            expect: ['direction', 'easing']
-          }
+            expect: ['direction', 'easing'],
+          },
         ],
         Object: [
           {
             test: {
               iterationComposite: 'accumulate',
-              del: 'accumulate'
+              del: 'accumulate',
             },
             expect: {
-              iterationComposite: 'accumulate'
-            }
+              iterationComposite: 'accumulate',
+            },
           },
           {
             test: {
-              iterationComposite: 'accumuslate'
+              iterationComposite: 'accumuslate',
             },
             expect: {
-              iterationComposite: 'replace'
-            }
+              iterationComposite: 'replace',
+            },
           },
           {
             test: {},
-            expect: {}
-          }
-        ]
-      }
+            expect: {},
+          },
+        ],
+      },
     },
     {
       args: [false],
@@ -178,14 +178,14 @@ const testData = {
         Object: [
           {
             test: {
-              iterationComposite: 'accumulate'
+              iterationComposite: 'accumulate',
             },
             expect: {
-              iterationComposite: 'accumulate'
-            }
-          }
-        ]
-      }
+              iterationComposite: 'accumulate',
+            },
+          },
+        ],
+      },
     },
     {
       args: [true, false],
@@ -193,23 +193,23 @@ const testData = {
         Object: [
           {
             test: {
-              iterationComposite: 'accumulte'
+              iterationComposite: 'accumulte',
             },
-            expect: {}
-          }
-        ]
-      }
-    }
-  ]
+            expect: {},
+          },
+        ],
+      },
+    },
+  ],
 }
 
-const testFn = key => {
+const testFn = (key) => {
   describe(`\n\n******************************\n${key}()\n******************************\n`, () => {
-    testData[key].forEach(kk => {
+    testData[key].forEach((kk) => {
       describe(`${key}(obj${kk.args.length ? ', ' + kk.args.join(', ') : ''})`, () => {
-        Object.keys(kk.data).forEach(kkk => {
+        Object.keys(kk.data).forEach((kkk) => {
           describe(`${key}(${kkk}${kk.args.length ? ', ' + kk.args.join(', ') : ''})`, () => {
-            kk.data[kkk].forEach(ke => {
+            kk.data[kkk].forEach((ke) => {
               test(`${key}(${JSON.stringify(ke.test)}) to equal ${JSON.stringify(ke.expect)}`, () => {
                 expect(WTProperties[key](ke.test, ...kk.args)).toEqual(ke.expect)
               })
@@ -221,6 +221,6 @@ const testFn = key => {
   })
 }
 
-Object.keys(testData).forEach(function(key) {
+Object.keys(testData).forEach(function (key) {
   testFn(key)
 })

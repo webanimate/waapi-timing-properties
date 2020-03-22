@@ -68,7 +68,7 @@ const options = {
   duration: -1000,
   easing: 'not easy',
   iterations: 3,
-  someInvalidOption: 123
+  someInvalidOption: 123,
 }
 ```
 
@@ -79,7 +79,7 @@ WTProperties.sanitize(options) ===
   {
     duration: 0,
     easing: 'linear',
-    iterations: 3
+    iterations: 3,
   }
 WTProperties.validate(options) === true
 ```
@@ -89,7 +89,7 @@ Use `sanitize(options, true, false)` to remove all properties with invalid names
 ```javascript
 WTProperties.sanitize(options, true, false) ===
   {
-    iterations: 3
+    iterations: 3,
   }
 WTProperties.validate(options) === true
 ```
@@ -101,7 +101,7 @@ WTProperties.sanitize(options, false) ===
   {
     duration: -1000,
     easing: 'not easy',
-    iterations: 3
+    iterations: 3,
   }
 WTProperties.validate(options) === false
 WTProperties.validate(options, false) === true
@@ -116,7 +116,7 @@ const options = {
   duration: -1000,
   easing: 'not easy',
   iterations: 3,
-  someInvalidOption: 123
+  someInvalidOption: 123,
 }
 WTProperties.validate(options) === false
 WTProperties.validate(options, true, true) === 'duration: -1000'

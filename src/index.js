@@ -5,14 +5,14 @@ import isNumber from 'lodash.isnumber'
 
 const properties = {
   id: {
-    type: 'String'
+    type: 'String',
   },
 
   delay: {
     type: 'Number',
     min: 0,
     max: Number.MAX_VALUE,
-    default: 0
+    default: 0,
   },
 
   direction: {
@@ -21,16 +21,16 @@ const properties = {
       'normal', //
       'reverse',
       'alternate',
-      'alternate-reverse'
+      'alternate-reverse',
     ],
-    default: 'normal'
+    default: 'normal',
   },
 
   duration: {
     type: 'Number',
     min: 0,
     max: Number.MAX_VALUE,
-    default: 0
+    default: 0,
   },
 
   easing: {
@@ -44,16 +44,16 @@ const properties = {
       'ease-in-out',
       'steps(',
       'step-start',
-      'step-end'
+      'step-end',
     ],
-    default: 'linear'
+    default: 'linear',
   },
 
   endDelay: {
     type: 'Number',
     min: 0,
     max: Number.MAX_VALUE,
-    default: 0
+    default: 0,
   },
 
   fill: {
@@ -63,23 +63,23 @@ const properties = {
       'forwards',
       'backwards',
       'both',
-      'auto'
+      'auto',
     ],
-    default: 'auto'
+    default: 'auto',
   },
 
   iterationStart: {
     type: 'Number',
     min: 0,
     max: Number.MAX_VALUE,
-    default: 0
+    default: 0,
   },
 
   iterations: {
     type: 'Number',
     min: 0,
     max: Infinity,
-    default: 0
+    default: 0,
   },
 
   composite: {
@@ -88,23 +88,23 @@ const properties = {
       'add', //
       'accumulate',
       'replace',
-      'auto'
+      'auto',
     ],
-    default: 'replace'
+    default: 'replace',
   },
 
   iterationComposite: {
     type: 'String',
     values: [
       'accumulate', //
-      'replace'
+      'replace',
     ],
-    default: 'replace'
-  }
+    default: 'replace',
+  },
 }
 
 const propertiesNames = []
-Object.keys(properties).forEach(key => {
+Object.keys(properties).forEach((key) => {
   propertiesNames.push(key)
 })
 
@@ -119,10 +119,7 @@ const isValidPropertyValue = (key, value) => {
     }
   } else {
     if (property.values) {
-      value = value
-        .toString()
-        .replace(/\s+\(/g, '(')
-        .trim()
+      value = value.toString().replace(/\s+\(/g, '(').trim()
       const bracketPosition = value.indexOf('(')
       if (bracketPosition > 0) {
         value = value.substring(0, bracketPosition + 1)
@@ -154,7 +151,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
         }
       }
     } else if (isObject(obj)) {
-      Object.keys(obj).forEach(key => {
+      Object.keys(obj).forEach((key) => {
         if (key in properties) {
           if (checkValues) {
             if (!isValidPropertyValue(key, obj[key])) {

@@ -194,13 +194,13 @@
                 <q-item-label>{{label}}</q-item-label>
                 <q-item-label caption>{{caption}}</q-item-label>
               </q-item-section>
-            </q-item>`
+            </q-item>`,
       })
 
       new Vue({
         el: '#q-app',
 
-        data: function() {
+        data: function () {
           return {
             code: JSON.stringify(
               {
@@ -212,7 +212,7 @@
                 composite: undefined,
                 iterationComposite: 111,
                 endDelay: 1e310,
-                invalidProperty: 'false'
+                invalidProperty: 'false',
               },
               null,
               2
@@ -221,12 +221,12 @@
             codeString: 'endDelay',
             checkValue: true,
             returnDefault: true,
-            drawer: false
+            drawer: false,
           }
         },
 
         computed: {
-          sanitized: function() {
+          sanitized: function () {
             let sanitized = ''
             try {
               sanitized = JSON.stringify(WTProperties.sanitize(JSON.parse(this.code), this.checkValue, this.returnDefault), null, 2)
@@ -237,7 +237,7 @@
             return sanitized
           },
 
-          sanitizedArray: function() {
+          sanitizedArray: function () {
             let sanitized = ''
             try {
               sanitized = JSON.stringify(WTProperties.sanitize(JSON.parse(this.codeArray)), null, 2)
@@ -248,7 +248,7 @@
             return sanitized
           },
 
-          sanitizedString: function() {
+          sanitizedString: function () {
             let sanitized = ''
             try {
               sanitized = WTProperties.sanitize(this.codeString)
@@ -257,7 +257,7 @@
               console.log(e)
             }
             return sanitized
-          }
+          },
         },
 
         created() {
@@ -266,26 +266,26 @@
               url: 'https://github.com/webanimate/waapi-timing-properties',
               icon: 'fab fa-github',
               label: 'Github repository',
-              caption: 'View repository on Github'
+              caption: 'View repository on Github',
             },
             {
               url: 'https://npmjs.com/package/waapi-timing-properties',
               icon: 'fab fa-npm',
               label: 'NPM package',
-              caption: 'View package on NPM'
+              caption: 'View package on NPM',
             },
             {
               url: 'https://github.com/webanimate/waapi-timing-properties/blob/master/index.html',
               icon: 'fab fa-github-alt',
               label: 'Github demo',
-              caption: 'View source of this demo'
+              caption: 'View source of this demo',
             },
             {
               url: 'https://quasar.dev/',
               icon: 'img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg',
               label: 'Running on Quasar v' + Quasar.version,
-              caption: 'Visit Quasar website'
-            }
+              caption: 'Visit Quasar website',
+            },
           ]
         },
 
@@ -304,8 +304,8 @@
               isValid.valid = WTProperties.validate(obj, checkValue, returnFirstInvalidProperty)
             }
             return isValid
-          }
-        }
+          },
+        },
       })
     </script>
   </body>
