@@ -25,7 +25,7 @@
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint \"**/*.*\"",
     "lint:prettier": "prettier --check \"**/*.*\"",
-    "test": "jest",
+    "test": "yarn fix && jest",
     "up": "yarn upgrade-interactive && yarn outdated"
   },
   "dependencies": {
