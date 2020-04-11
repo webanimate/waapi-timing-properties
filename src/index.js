@@ -79,7 +79,7 @@ const properties = {
     type: 'Number',
     min: 0,
     max: Infinity,
-    default: 0,
+    default: 1,
   },
 
   composite: {
