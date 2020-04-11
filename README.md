@@ -128,6 +128,117 @@ WTProperties.validate(options, false, true) === 'someInvalidOption: 123'
 
 Play with the [DEMO](https://webanimate.github.io/waapi-timing-properties/) for better understanding of how it works.
 
+Here's the list of all the properties with their possible values and defaults:
+
+- ####id
+  Possible values:
+
+  - Any string
+
+  Default:
+
+  - No default value
+
+- ####direction
+  Possible values:
+
+  - `normal`
+  - `reverse`
+  - `alternate`
+  - `alternate-reverse`
+
+  Default:
+
+  - `normal`
+
+- ####duration
+  Possible values:
+
+  - Any positive number or `0`
+
+  Default:
+
+  - `0`
+
+- ####easing
+  Possible values:
+
+  - `linear`
+  - `ease`
+  - `ease-in`
+  - `ease-out`
+  - `ease-in-out`
+  - `cubic-bezier(x1, y1, x2, y2)` where x1 and x2 are numbers between 0 and 1, y1 and y2 are any numbers
+  - `step-start`
+  - `step-end`
+  - `steps(number_of_steps[, direction])` where `number_of_steps` is an integer greater than `0` and optional `direction` is one of `end`, `start`, `jump-both`, `jump-none`, `jump-end`, `jump-start`
+
+  Default:
+
+  - `linear`
+
+- ####endDelay
+  Possible values:
+
+  - Any positive number or `0`
+
+  Default:
+
+  - `0`
+
+- ####fill
+  Possible values:
+
+  - `none`
+  - `forwards`
+  - `backwards`
+  - `both`
+  - `auto`
+
+  Default:
+
+  - `auto`
+
+- ####iterationStart
+  Possible values:
+
+  - Any positive number or `0`
+
+  Default:
+
+  - `0`
+
+- ####iterations
+  Possible values:
+
+  - Any positive number or `0` or `Infinity`
+
+  Default:
+
+  - `1`
+
+- ####composite
+  Possible values:
+
+  - `add`
+  - `accumulate`
+  - `replace`
+  - `auto`
+
+  Default:
+
+  - `replace`
+
+- ####fill
+  Possible values:
+
+  - `accumulate`
+  - `replace`
+
+  Default:
+
+  - `replace`
+
 # Development
 
 Build the bundle for browsers into `./dist` folder:
