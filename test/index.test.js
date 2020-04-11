@@ -72,7 +72,91 @@ const testData = {
             test: {
               easing: 'cubic-bezier()',
             },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'cubic-bezier(',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'cubic-bezier(1.00000000, 0.61, 0.355, 1)',
+            },
             expect: true,
+          },
+          {
+            test: {
+              easing: 'cubic-bezier(1.00000000, 1.2., 0.355, 1)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'cubic-bezier(1.000000001, 0.61, 0.355, 1)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(2.0, jump-end)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(2, jummp-end)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps (2, jump-end)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(-3, start)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(0, jump-none)',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(0, jump-none, 1 )',
+            },
+            expect: false,
+          },
+          {
+            test: {
+              easing: 'steps(5, end)',
+            },
+            expect: true,
+          },
+          {
+            test: {
+              easing: 'steps(2, start)',
+            },
+            expect: true,
+          },
+          {
+            test: {
+              easing: 'steps(2)',
+            },
+            expect: true,
+          },
+          {
+            test: {
+              direction: 'cubic-bezier()',
+            },
+            expect: false,
           },
           {
             test: {
@@ -155,6 +239,24 @@ const testData = {
             },
             expect: {
               iterationComposite: 'accumulate',
+            },
+          },
+          {
+            test: {
+              iterationComposite: ' accumulate ',
+              del: 'accumulate',
+            },
+            expect: {
+              iterationComposite: 'accumulate',
+            },
+          },
+          {
+            test: {
+              iterationComposite: 5,
+              del: 'accumulate',
+            },
+            expect: {
+              iterationComposite: 'replace',
             },
           },
           {

@@ -108,6 +108,42 @@ Object.keys(properties).forEach((key) => {
   propertiesNames.push(key)
 })
 
+const isCssNumber = (string) => {
+  return /^[-+]?\d*\.?\d+([eE]?[-+]?\d+)?$/.test(string.trim())
+}
+
+const checkCubicBezier = (value) => {
+  const numbers = value.substring(13, value.length - 1).split(',')
+  if (numbers.length === 4) {
+    for (const index of numbers.keys()) {
+      if (!isCssNumber(numbers[index])) {
+        return false
+      }
+      if ([0, 2].includes(index)) {
+        if (Number(numbers[index]) < 0 || Number(numbers[index]) > 1) {
+          return false
+        }
+      }
+    }
+    return true
+  }
+  return false
+}
+
+const checkSteps = (value) => {
+  const values = value.substring(6, value.length - 1).split(',')
+  if (values.length > 2) {
+    return false
+  }
+  if (!/^[+]?\d+?$/.test(values[0].trim()) || Number(values[0]) <= 0) {
+    return false
+  }
+  if (values[1] && !['end', 'start', 'jump-both', 'jump-none', 'jump-end', 'jump-start'].includes(values[1].trim())) {
+    return false
+  }
+  return true
+}
+
 const isValidPropertyValue = (key, value) => {
   if (!isNumber(value) && !isString(value)) {
     return false
@@ -119,9 +155,21 @@ const isValidPropertyValue = (key, value) => {
     }
   } else {
     if (property.values) {
-      value = value.toString().replace(/\s+\(/g, '(').trim()
+      value = value.toString()
       const bracketPosition = value.indexOf('(')
       if (bracketPosition > 0) {
+        if (key === 'easing') {
+          if (value.substring(value.length - 1) !== ')') {
+            return false
+          }
+          if (value.substring(0, 13) === 'cubic-bezier(') {
+            return checkCubicBezier(value)
+          } else if (value.substring(0, 6) === 'steps(') {
+            return checkSteps(value)
+          } else {
+            return false
+          }
+        }
         value = value.substring(0, bracketPosition + 1)
       }
       for (const propertyValue of property.values) {
@@ -134,6 +182,13 @@ const isValidPropertyValue = (key, value) => {
     return true
   }
   return true
+}
+
+const removeExtraSpaces = (value) => {
+  if (isString(value)) {
+    value = value.trim().replace(/\s+/g, ' ').replace(/\( /, '(').replace(/ \)/, ')').replace(' ,', ',')
+  }
+  return value
 }
 
 const sanitize = (obj, checkValues = true, returnDefault = true) => {
@@ -153,6 +208,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
     } else if (isObject(obj)) {
       Object.keys(obj).forEach((key) => {
         if (key in properties) {
+          obj[key] = removeExtraSpaces(obj[key])
           if (checkValues) {
             if (!isValidPropertyValue(key, obj[key])) {
               if (returnDefault && properties[key].default !== undefined) {
@@ -190,6 +246,7 @@ const validate = (obj, checkValues = true, returnFirstInvalidProperty = false) =
         if (!(key in properties)) {
           return returnFirstInvalidProperty ? `${key}: ${obj[key]}` : false
         } else if (checkValues) {
+          obj[key] = removeExtraSpaces(obj[key])
           if (!isValidPropertyValue(key, obj[key])) {
             return returnFirstInvalidProperty ? `${key}: ${obj[key]}` : false
           }
