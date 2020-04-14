@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/webanimate/waapi-timing-properties/compare/v1.2.0...v1.2.1) (2020-04-14)
+
+### Performance Improvements
+
+- remove lodash.isempty dependency ([e10663b](https://github.com/webanimate/waapi-timing-properties/commit/e10663b7ee76d5219dd960080276a67ad402f0b2))
+
 # [1.2.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.1.0...v1.2.0) (2020-04-14)
 
 ### Bug Fixes
