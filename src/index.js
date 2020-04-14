@@ -64,7 +64,7 @@ const properties = {
       'both',
       'auto',
     ],
-    default: 'auto',
+    default: 'none',
   },
 
   iterationStart: {
