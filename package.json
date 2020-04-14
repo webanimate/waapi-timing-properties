@@ -19,13 +19,13 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "fix": "yarn fix:eslint && yarn fix:prettier && yarn build",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
     "fix:eslint": "eslint --fix \"**/*.*\"",
     "fix:prettier": "prettier --write \"**/*.*\"",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint \"**/*.*\"",
     "lint:prettier": "prettier --check \"**/*.*\"",
-    "test": "yarn fix && jest",
+    "test": "yarn fix && jest && yarn build",
     "up": "yarn upgrade-interactive && yarn outdated"
   },
   "dependencies": {
