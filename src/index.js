@@ -1,6 +1,5 @@
 import isObject from 'lodash.isobject'
 import isString from 'lodash.isstring'
-import isEmpty from 'lodash.isempty'
 import isNumber from 'lodash.isnumber'
 
 const properties = {
@@ -202,7 +201,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
   } else if (isObject(obj)) {
     _properties = {}
   }
-  if (!isEmpty(obj)) {
+  if (Object.keys(obj).length) {
     if (Array.isArray(obj)) {
       for (const key of obj) {
         if (propertiesNames.includes(key)) {
@@ -237,7 +236,7 @@ const sanitize = (obj, checkValues = true, returnDefault = true) => {
 }
 
 const validate = (obj, checkValues = true, returnFirstInvalidProperty = false) => {
-  if (!isEmpty(obj)) {
+  if (Object.keys(obj).length) {
     if (Array.isArray(obj)) {
       for (const key of obj) {
         if (!propertiesNames.includes(key)) {
