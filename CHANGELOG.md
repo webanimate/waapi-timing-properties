@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.1.0...v1.2.0) (2020-04-14)
+
+### Bug Fixes
+
+- change iterations default value from 0 to 1 ([e6d1b2f](https://github.com/webanimate/waapi-timing-properties/commit/e6d1b2f1693dea4944955185a7700afac99ea499))
+
+### Features
+
+- add cubic-bezier and step timing functions validation ([b331b96](https://github.com/webanimate/waapi-timing-properties/commit/b331b96e8ad5aac284bb1c72b447a03c10a15fe4))
+
 # [1.1.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.0.0...v1.1.0) (2020-03-21)
 
 ### Features
