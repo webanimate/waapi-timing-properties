@@ -130,7 +130,8 @@ Play with the [DEMO](https://webanimate.github.io/waapi-timing-properties/) for 
 
 Here's the list of all the properties with their possible values and defaults:
 
-- ####id
+- #### id
+
   Possible values:
 
   - Any string
@@ -139,7 +140,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - No default value
 
-- ####direction
+- #### direction
+
   Possible values:
 
   - `normal`
@@ -151,7 +153,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `normal`
 
-- ####duration
+- #### duration
+
   Possible values:
 
   - Any positive number or `0`

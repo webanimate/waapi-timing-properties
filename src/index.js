@@ -112,6 +112,10 @@ const isCssNumber = (string) => {
   return /^[-+]?\d*\.?\d+([eE]?[-+]?\d+)?$/.test(string.trim())
 }
 
+const isCssPositiveInteger = (string) => {
+  return /^[+]?\d+?$/.test(string.trim()) && Number(string) > 0
+}
+
 const checkCubicBezier = (value) => {
   const numbers = value.substring(13, value.length - 1).split(',')
   if (numbers.length === 4) {
@@ -135,7 +139,7 @@ const checkSteps = (value) => {
   if (values.length > 2) {
     return false
   }
-  if (!/^[+]?\d+?$/.test(values[0].trim()) || Number(values[0]) <= 0) {
+  if (!isCssPositiveInteger(values[0])) {
     return false
   }
   if (values[1] && !['end', 'start', 'jump-both', 'jump-none', 'jump-end', 'jump-start'].includes(values[1].trim())) {
