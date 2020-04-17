@@ -51,6 +51,32 @@ Or load from CDN:
 
 `WTProperties.properties` is an object containing properties names and their possible values.
 
+The structure of the object is this:
+
+```javascript
+WTProperties.propertiesNames.forEach((property) => {
+  const object = WTProperties.properties[property]
+})
+```
+
+`object.default` is the default value of the property.
+
+`object.type` is either `'Number'` or `'String'`.
+
+If `object.type === 'Number'` then
+
+`object.min` is its minimal possible value
+
+`object.max` is its maximal possible value
+
+If `object.type === 'String'` then
+
+`object.values` is an array of possible values.
+
+For `easing` property there is also
+
+`object.valuesCubicBezier` object which contains cubic-bezier equivalents of `linear`, `ease`, `ease-in`, `ease-out` and `ease-in-out`
+
 `WTProperties.propertiesNames` is an array containing only properties names.
 
 `WTProperties.sanitize` has two optional arguments:
