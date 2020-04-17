@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.2.1...v1.3.0) (2020-04-17)
+
+### Bug Fixes
+
+- change `fill` default value from `auto` to `none` ([35d7e2a](https://github.com/webanimate/waapi-timing-properties/commit/35d7e2a118f402a5000c31c4e410ba93380dac31))
+
+### Features
+
+- add valuesCubicBezier for `easing` property ([74fce14](https://github.com/webanimate/waapi-timing-properties/commit/74fce14155683a3d06cde240c412f3ea7b4fd0a1))
+
 ## [1.2.1](https://github.com/webanimate/waapi-timing-properties/compare/v1.2.0...v1.2.1) (2020-04-14)
 
 ### Performance Improvements
