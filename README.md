@@ -163,7 +163,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `0`
 
-- ####easing
+- #### easing
+
   Possible values:
 
   - `linear`
@@ -180,7 +181,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `linear`
 
-- ####endDelay
+- #### endDelay
+
   Possible values:
 
   - Any positive number or `0`
@@ -189,7 +191,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `0`
 
-- ####fill
+- #### fill
+
   Possible values:
 
   - `none`
@@ -200,9 +203,10 @@ Here's the list of all the properties with their possible values and defaults:
 
   Default:
 
-  - `auto`
+  - `none`
 
-- ####iterationStart
+- #### iterationStart
+
   Possible values:
 
   - Any positive number or `0`
@@ -211,7 +215,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `0`
 
-- ####iterations
+- #### iterations
+
   Possible values:
 
   - Any positive number or `0` or `Infinity`
@@ -220,7 +225,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `1`
 
-- ####composite
+- #### composite
+
   Possible values:
 
   - `add`
@@ -232,7 +238,8 @@ Here's the list of all the properties with their possible values and defaults:
 
   - `replace`
 
-- ####fill
+- #### iterationComposite
+
   Possible values:
 
   - `accumulate`
