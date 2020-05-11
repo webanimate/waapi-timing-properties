@@ -1,3 +1,13 @@
+## [1.3.1](https://github.com/webanimate/waapi-timing-properties/compare/v1.3.0...v1.3.1) (2020-05-11)
+
+### Bug Fixes
+
+- change `fill` default value from `none` to `auto` ([5572c9c](https://github.com/webanimate/waapi-timing-properties/commit/5572c9c2f3040d00d1c18c5470cf9c4eb14485ec))
+
+### Performance Improvements
+
+- update dev dependencies ([b917cfd](https://github.com/webanimate/waapi-timing-properties/commit/b917cfd8b8afd5859e28fedee142f21a789dda94))
+
 # [1.3.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.2.1...v1.3.0) (2020-04-17)
 
 ### Bug Fixes
