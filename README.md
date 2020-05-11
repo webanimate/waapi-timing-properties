@@ -229,7 +229,7 @@ Here's the list of all the properties with their possible values and defaults:
 
   Default:
 
-  - `none`
+  - `auto`
 
 - #### iterationStart
 

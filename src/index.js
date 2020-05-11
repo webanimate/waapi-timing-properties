@@ -71,7 +71,7 @@ const properties = {
       'both',
       'auto',
     ],
-    default: 'none',
+    default: 'auto',
   },
 
   iterationStart: {
