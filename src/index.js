@@ -52,6 +52,10 @@ const properties = {
       'ease-out': '0, 0, 0.58, 1',
       'ease-in-out': '0.42, 0, 0.58, 1',
     },
+    valuesSteps: {
+      'step-start': '1, jump-start',
+      'step-end': '1, jump-end',
+    },
     default: 'linear',
   },
 

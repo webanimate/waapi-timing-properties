@@ -77,6 +77,10 @@ For `easing` property there is also
 
 `object.valuesCubicBezier` object which contains cubic-bezier equivalents of `linear`, `ease`, `ease-in`, `ease-out` and `ease-in-out`
 
+and
+
+`object.valuesSteps` object which contains steps equivalents of `step-start` and `step-end`
+
 `WTProperties.propertiesNames` is an array containing only properties names.
 
 `WTProperties.sanitize` has two optional arguments:
