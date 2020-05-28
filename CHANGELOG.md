@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/webanimate/waapi-timing-properties/compare/v1.3.1...v1.4.0) (2020-05-28)
+
+### Features
+
+- add valuesSteps for `easing` property ([b730814](https://github.com/webanimate/waapi-timing-properties/commit/b730814f95aa4fa2730a2d1979cb383aef7de52d))
+
 ## [1.3.1](https://github.com/webanimate/waapi-timing-properties/compare/v1.3.0...v1.3.1) (2020-05-11)
 
 ### Bug Fixes
