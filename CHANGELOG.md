@@ -1,3 +1,9 @@
+## [1.4.3](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.2...v1.4.3) (2020-10-11)
+
+### Bug Fixes
+
+- fix security vulnerabilities by updating devDependencies ([e1b4009](https://github.com/webanimate/waapi-timing-properties/commit/e1b4009105a5bc039edbfcd5da8bf9697359d9d5))
+
 ## [1.4.2](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.1...v1.4.2) (2020-08-04)
 
 ### Performance Improvements
