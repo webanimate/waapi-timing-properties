@@ -1,3 +1,9 @@
+## [1.4.4](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.3...v1.4.4) (2020-11-28)
+
+### Performance Improvements
+
+- upgrade devDependencies to next major versions: @rollup/plugin-commonjs to v16.0.0 and @rollup/plugin-node-resolve to v10.0.0 ([60b4ba5](https://github.com/webanimate/waapi-timing-properties/commit/60b4ba59a8dba270d2245bc6e45b872ff582b725))
+
 ## [1.4.3](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.2...v1.4.3) (2020-10-11)
 
 ### Bug Fixes
