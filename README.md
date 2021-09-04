@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/webanimate/waapi-timing-properties.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties)
 [![devDependencies Status](https://david-dm.org/webanimate/waapi-timing-properties/dev-status.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties?type=dev)
 [![codecov](https://codecov.io/gh/webanimate/waapi-timing-properties/branch/master/graph/badge.svg)](https://codecov.io/gh/webanimate/waapi-timing-properties)
-[![Build Status](https://travis-ci.org/webanimate/waapi-timing-properties.svg?branch=master)](https://travis-ci.org/webanimate/waapi-timing-properties)
+[![Build Status](https://app.travis-ci.com/webanimate/waapi-timing-properties.svg?branch=master)](https://app.travis-ci.com/webanimate/waapi-timing-properties)
 
 List of [timing properties](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) and their possible values for animation effects used in [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
 
