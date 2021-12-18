@@ -64,7 +64,7 @@ const testData = {
           },
           {
             test: {
-              delay: 1e500,
+              delay: 1e500, // eslint-disable-line no-loss-of-precision
             },
             expect: false,
           },
