@@ -3,8 +3,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![](https://img.shields.io/npm/v/waapi-timing-properties.svg)](https://www.npmjs.com/package/waapi-timing-properties)
 [![](https://img.shields.io/bundlephobia/minzip/waapi-timing-properties.svg)](https://bundlephobia.com/result?p=waapi-timing-properties)
-[![Dependency Status](https://david-dm.org/webanimate/waapi-timing-properties.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties)
-[![devDependencies Status](https://david-dm.org/webanimate/waapi-timing-properties/dev-status.svg?theme=shields.io)](https://david-dm.org/webanimate/waapi-timing-properties?type=dev)
+[![Depfu](https://badges.depfu.com/badges/60fa0ec271d59de743b3dce301e72ff1/count.svg)](https://depfu.com/github/webanimate/waapi-timing-properties?project_id=11419)
 [![codecov](https://codecov.io/gh/webanimate/waapi-timing-properties/branch/master/graph/badge.svg)](https://codecov.io/gh/webanimate/waapi-timing-properties)
 [![Build Status](https://app.travis-ci.com/webanimate/waapi-timing-properties.svg?branch=master)](https://app.travis-ci.com/webanimate/waapi-timing-properties)
 
