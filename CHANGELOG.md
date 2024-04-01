@@ -1,3 +1,13 @@
+## [1.4.8](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.7...v1.4.8) (2024-04-01)
+
+### Bug Fixes
+
+- disable eslint no-loss-of-precision error ([061e793](https://github.com/webanimate/waapi-timing-properties/commit/061e793994301391851592147e634d70d688fcca))
+
+### Performance Improvements
+
+- upgrade devDependencies ([e98d332](https://github.com/webanimate/waapi-timing-properties/commit/e98d3321da4e428c3114f5c427f0602f420959ca))
+
 ## [1.4.7](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.6...v1.4.7) (2021-09-02)
 
 ### Performance Improvements
