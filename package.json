@@ -37,37 +37,20 @@
   "devDependencies": {
     "@babel/core": "^7.27.1",
     "@babel/preset-env": "^7.27.2",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.27.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "babel-jest": "^27.1.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-html": "^8.1.3",
-    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-json": "^4.0.1",
+    "globals": "^16.2.0",
     "jest": "^27.1.0",
     "prettier": "^3.5.3",
     "rollup": "^2.56.3",
     "rollup-plugin-terser": "^7.0.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "jest": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 11,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "html",
-      "json"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:json/recommended",
-      "prettier"
-    ]
   },
   "jest": {
     "coverageDirectory": "./coverage/",
