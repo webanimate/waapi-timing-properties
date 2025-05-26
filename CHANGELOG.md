@@ -1,3 +1,5 @@
+## [1.4.9](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.8...v1.4.9) (2025-05-26)
+
 ## [1.4.8](https://github.com/webanimate/waapi-timing-properties/compare/v1.4.7...v1.4.8) (2024-04-01)
 
 ### Bug Fixes
